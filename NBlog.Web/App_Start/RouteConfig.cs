@@ -36,6 +36,9 @@ namespace NBlog.Web
             routes.MapRoute("", "contact", new { controller = "Contact", action = "Index" });
 
             // entry pages
+            routes.MapRoute("", "blog/{*Data}", new { controller = "Blog", action = "Index" });
+
+            // entry pages
             routes.MapRoute("", "{id}", new { controller = "Entry", action = "Show" });
 
             // general route

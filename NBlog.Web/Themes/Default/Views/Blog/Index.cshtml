@@ -1,0 +1,65 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="myApp">
+<head>
+    <title>AngularJS Demo Blog</title>
+    <!-- Bootstrap -->
+    <link href="/Content/bootstrap.css" rel="stylesheet">
+    <link href="/Content/bootstrap-theme.css" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <h1>Hello, world!</h1>
+        </div>
+        <div class="row">
+            <div ng-view></div>
+        </div>
+    </div>
+    <script src="/Scripts/jquery-1.9.0.js"></script>
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/angular.js"></script>
+    <script src="/Scripts/angular-route.js"></script>
+    <script src="/Scripts/angular-resource.js"></script>
+    <script type="text/ng-template" id="posts-list.html">
+        <div>{{Name}}</div>
+    </script>
+    <script type="text/ng-template" id="post-detail.html">
+        <div>Post {{Id}}</div>
+    </script>
+    <script>
+        var myApp = angular.module("myApp", ["ngRoute", "ngResource"]);
+
+        myApp.config(["$routeProvider", function ($routeProvider) {
+            $routeProvider.
+              when('/', {
+                  templateUrl: 'posts-list.html',
+                  controller: 'PostsListCtrl'
+              }).
+              when('/:postId', {
+                  templateUrl: 'post-detail.html',
+                  controller: 'PostDetailCtrl'
+              }).
+              otherwise({
+                  redirectTo: '/'
+              });
+        }]);
+
+        myApp.controller("PostsListCtrl", ["$scope", function ($scope) {
+            $scope.Name = "Test";
+        }]);
+
+        myApp.controller("PostDetailCtrl", ["$scope", "$routeParams", function ($scope, $routeParams) {
+            $scope.Id = $routeParams.postId;
+        }]);
+    </script>
+</body>
+</html>
+
