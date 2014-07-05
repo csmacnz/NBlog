@@ -419,7 +419,9 @@
     <Compile Include="Application\Storage\Sql\SqlRepository.cs" />
     <Compile Include="App_Start\ContainerConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BlogApiController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\AuthenticationController.Models.cs" />
     <Compile Include="Controllers\BlogController.cs" />

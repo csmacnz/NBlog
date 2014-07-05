@@ -15,6 +15,7 @@ namespace NBlog.Web
         private void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
+            WebApiConfig.Register(GlobalConfiguration.Configuration);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             ContainerConfig.SetUpContainer();
         }
